@@ -15,15 +15,6 @@ public class HelloFomResource
     private static final Logger LOGGER =
                 LogManager.getLogger(new Object(){}.getClass().getEnclosingClass().getName());
 
-    private HelloFomResource() {}
-
-    public static HelloFomResource of() {return new HelloFomResource();}
-
-    public String getGreeting()
-    {
-        return getGreeting(Calendar.getInstance());
-    }
-
     public String getGreeting(Calendar calendar)
     {
         int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
@@ -64,5 +55,12 @@ public class HelloFomResource
         ResourceBundle labels = ResourceBundle.getBundle("Message", Locale.getDefault());
 
         return labels.getString(period.toString());
+    }
+
+    public static void main(String[] args)
+    {
+        HelloFomResource helloFomResource = new HelloFomResource();
+
+        System.out.println(helloFomResource.getGreeting(Calendar.getInstance()));
     }
 }

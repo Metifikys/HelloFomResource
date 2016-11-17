@@ -15,34 +15,6 @@ import static org.junit.Assert.*;
  */
 public class HelloFomResourceTest
 {
-    private static final Logger LOGGER =
-                LogManager.getLogger(new Object(){}.getClass().getEnclosingClass().getName());
-
-
-    @org.junit.Test
-    public void testGetGreetingNotEmptyRU() throws Exception
-    {
-        Locale.setDefault(new Locale("ru"));
-
-        String greeting = HelloFomResource.of().getGreeting();
-
-        assertNotNull("return resurse is null", greeting);
-        assertNotEquals("", greeting);
-
-        LOGGER.trace(greeting);
-    }
-
-    @org.junit.Test
-    public void testGetGreetingNotEmptyUK() throws Exception
-    {
-        String greeting = HelloFomResource.of().getGreeting();
-
-        assertNotNull("return resurse is null", greeting);
-        assertNotEquals("", greeting);
-
-        LOGGER.trace(greeting);
-    }
-
     @Test
     public void testMessageRuByTime() throws Exception
     {
@@ -51,7 +23,7 @@ public class HelloFomResourceTest
 
         Calendar instance = Calendar.getInstance();
 
-        HelloFomResource fomResource = HelloFomResource.of();
+        HelloFomResource fomResource = new HelloFomResource();
 
         instance.set(Calendar.HOUR_OF_DAY, 8);
         assertEquals(
